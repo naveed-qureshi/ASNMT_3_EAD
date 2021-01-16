@@ -1,0 +1,7 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model ASNMT_3_EAD.Models.UserData;
+<div style="width:50%; margin:auto">
+        <a asp-action="Post" asp-route-UserName="@Model.UserName" class="btn btn-primary">Create Post</a>
+</div>
