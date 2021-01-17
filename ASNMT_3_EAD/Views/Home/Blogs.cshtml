@@ -1,7 +1,38 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@model ASNMT_3_EAD.Models.UserData;
-<div style="width:50%; margin:auto">
+@model ASNMT_3_EAD.Models.Records;
+<style>
+    
+    .content {
+        background-color: white;
+        border: 1px solid #edebeb;
+        padding:2px;
+    }
+</style>
+<div style="background-color: #fcfafa;">
+    <div style=" width:50%;margin:auto">
         <a asp-action="Post" asp-route-UserName="@Model.UserName" class="btn btn-primary">Create Post</a>
+        <div class="container mt-5">
+            @foreach (ASNMT_3_EAD.Models.Posts p in @Model.posts)
+            {
+            <a asp-route-id="@p.ID" asp-action="PostDetails" style="text-decoration:none">
+                <div class="row mb-5 content">
+                    <div class="col-sm-2 class="col-sm-2 mr-5">
+                        <img src="@p.getProfileImage()" width="100px" height="100px" style="border-radius:50%" />
+                    </div>
+                    <div class="col-sm-10">
+                        <h5 style="color: #428beb">@p.UserName <span style="color: #e3dede; font-size:14px; margin-left:3%">@p.Date</span></h5>
+                        <hr style="width:100%" />
+                        <h1>@p.Title</h1>
+                        <p>@p.Content</p>
+                    </div>
+                </div>
+            </a>
+            }
+
+
+        </div>
+    </div>
+
 </div>

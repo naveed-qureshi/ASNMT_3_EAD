@@ -14,30 +14,42 @@ namespace ASNMT_3_EAD.Controllers
 {
 		public class HomeController : Controller
 		{
+		   [HttpGet]
 				public ViewResult LoginForm(){
 						return View ();
 				}
 				public ViewResult Post(string UserName )
 				{
-						return View ("Post",UserName);
+						Posts pts = new Posts ();
+						pts.UserName = UserName;
+						return View ("Post",pts);
 				}
 				public ViewResult Profile()
 				{
-						return View ();
-				}
-				public ViewResult PostDetails ( )
-				{
-						return View ();
+						UserData ud = new UserData ();
+						if (HttpContext.Request.Cookies.ContainsKey ("uName"))
+						{
+								ud.UserName = HttpContext.Request.Cookies["uName"];
+								UserDB.getUserData (ud);
+								return View (ud);
+						}
+
+						return View (ud);
 				}
 				public ViewResult Login (string email,string password )
 				{
 						UserData ud = new UserData ();
 						if (UserDB.verifyUser (email, password,ud))
-								return View ("Blogs",ud);
+						{
+								PostsRepository.records.UserName = ud.UserName;
+								HttpContext.Response.Cookies.Append ("uName", ud.UserName);
+								return View ("Blogs", PostsRepository.records);
+						}
 						//return View ("Thankscshtml",ud);
 						else
 								return View ("LoginForm");
 				}
+
 				[HttpPost]
 				public async Task<ViewResult> SignUpAsync (User usr)
 				{
@@ -51,6 +63,25 @@ namespace ASNMT_3_EAD.Controllers
 						UserDB.AddUser (usrData);
 
 						return View ("Blogs") ;
+				}
+
+				[HttpPost]
+				public ViewResult Blogs(Posts p){
+						
+						PostsRepository.records.UserName = p.UserName;
+						PostsRepository.records.Add (p);
+						UserDB.AddPost (p);
+						return View ("Blogs", PostsRepository.records);
+				}
+				
+				public ViewResult PostDetails(int id){
+						Posts p = new Posts ();
+						p.ID = id;
+						UserDB.getPostData (p);
+						if(HttpContext.Request.Cookies.ContainsKey("uName")){
+								p.user2 = HttpContext.Request.Cookies["uName"];
+						}
+						return View (p);
 				}
 		}
 }
