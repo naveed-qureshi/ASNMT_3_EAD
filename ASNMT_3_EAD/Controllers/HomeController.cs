@@ -15,8 +15,8 @@ namespace ASNMT_3_EAD.Controllers
 		public class HomeController : Controller
 		{
 		   [HttpGet]
-				public PartialViewResult LoginForm(){
-						return PartialView("LoginForm");
+				public ViewResult LoginForm(){
+						return View("LoginForm");
 				}
 				public ViewResult Post(string UserName )
 				{

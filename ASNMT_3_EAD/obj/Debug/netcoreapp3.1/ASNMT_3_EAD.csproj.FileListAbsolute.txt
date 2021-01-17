@@ -56,4 +56,3 @@ C:\Users\Muhammad Naveed\source\repos\ASNMT_3_EAD\ASNMT_3_EAD\obj\Debug\netcorea
 C:\Users\Muhammad Naveed\source\repos\ASNMT_3_EAD\ASNMT_3_EAD\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
 C:\Users\Muhammad Naveed\source\repos\ASNMT_3_EAD\ASNMT_3_EAD\obj\Debug\netcoreapp3.1\Razor\Views\Home\Blogs.cshtml.g.cs
 C:\Users\Muhammad Naveed\source\repos\ASNMT_3_EAD\ASNMT_3_EAD\obj\Debug\netcoreapp3.1\ASNMT_3_EAD.csprojAssemblyReference.cache
-C:\Users\Muhammad Naveed\source\repos\ASNMT_3_EAD\ASNMT_3_EAD\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout1.cshtml.g.cs
