@@ -15,8 +15,8 @@ namespace ASNMT_3_EAD.Controllers
 		public class HomeController : Controller
 		{
 		   [HttpGet]
-				public ViewResult LoginForm(){
-						return View ();
+				public PartialViewResult LoginForm(){
+						return PartialView("LoginForm");
 				}
 				public ViewResult Post(string UserName )
 				{
@@ -62,7 +62,9 @@ namespace ASNMT_3_EAD.Controllers
 						UserData usrData = new UserData () { UserName = usr.UserName, Email = usr.Email, Password = usr.password, ImageAddress = $"/images/{usr.Image.FileName}" };
 						UserDB.AddUser (usrData);
 
-						return View ("Blogs") ;
+						PostsRepository.records.UserName = usr.UserName;
+						HttpContext.Response.Cookies.Append ("uName", usr.UserName);
+						return View ("Blogs", PostsRepository.records);
 				}
 
 				[HttpPost]

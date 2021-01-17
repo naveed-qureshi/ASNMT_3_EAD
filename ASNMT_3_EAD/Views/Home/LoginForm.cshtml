@@ -1,17 +1,9 @@
 ﻿@using ASNMT_3_EAD.Models
 @model User 
-@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link href="~/css/site.css" rel="stylesheet" />
-    <title>Signup</title>
+    <title>Logins</title>
 </head>
 <body>
     <div class="container">
@@ -44,17 +36,17 @@
                     </div>
                     <div class="form-group">
                         <label asp-for="Email">Email*</label>
-                        <input  class="form-control" type="email" asp-for="Email">
+                        <input class="form-control" type="email" asp-for="Email">
                     </div>
                     <div class="form-group">
                         <label asp-for="password">Password</label>
-                        <input  class="form-control" type="password" asp-for="password">
+                        <input class="form-control" type="password" asp-for="password">
                     </div>
 
 
                     <div class="form-group">
                         <label asp-for="Image">Select Your Profile Picture*</label>
-                        <input  class="form-control-file" asp-for="Image">
+                        <input class="form-control-file" asp-for="Image">
                     </div>
 
                     <button type="submit" class="btn btn-primary" style="width:100%">Sign Up</button>
@@ -62,6 +54,5 @@
             </div>
         </div>
     </div>
-
 </body>
 </html>
